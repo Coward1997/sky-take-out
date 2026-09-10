@@ -6,6 +6,11 @@ spring:
     active: dev
   main:
     allow-circular-references: true
+  servlet:
+    multipart:
+      # 前端允许上传最大 2MB 的图片,默认限制只有 1MB,必须调大
+      max-file-size: 10MB
+      max-request-size: 100MB
   datasource:
     druid:
       driver-class-name: ${sky.datasource.driver-class-name}
