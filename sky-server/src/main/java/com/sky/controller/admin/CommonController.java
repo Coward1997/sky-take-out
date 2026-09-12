@@ -3,15 +3,15 @@ package com.sky.controller.admin;
 
 import com.sky.constant.MessageConstant;
 import com.sky.result.Result;
-import com.sky.utils.AliOssUtil;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -24,8 +24,9 @@ import java.util.UUID;
 @Slf4j
 public class CommonController {
 
-    @Autowired
-    private AliOssUtil aliOssUtil;
+    //上传文件保存目录,由 nginx 静态资源服务对外提供访问
+    @Value("${sky.upload.dir}")
+    private String uploadDir;
     /**
      * 文件上传
      * @param file
@@ -43,9 +44,14 @@ public class CommonController {
             //构造新文件名称
             String objectName = UUID.randomUUID().toString() + extension;
 
-            //文件请求路径
-            String filePath = aliOssUtil.upload(file.getBytes(), objectName);
-            return Result.success(filePath);
+            File dir = new File(uploadDir);
+            if (!dir.exists() && !dir.mkdirs()) {
+                throw new IOException("无法创建上传目录：" + uploadDir);
+            }
+            file.transferTo(new File(dir, objectName));
+
+            //返回相对路径,前端(localhost:8080)由 nginx 映射到保存目录,可直接展示
+            return Result.success("/img/upload/" + objectName);
         } catch (IOException e) {
            log.error("文件上传失败：{}",e);
         }

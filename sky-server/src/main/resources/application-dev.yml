@@ -11,3 +11,6 @@ sky:
     access-key-id: LTAI5tAmQrvTt1X16DrVEJuw
     access-key-secret: xX5kaHWODRS2vpHEoJfWkAda4dBRdZ
     bucket-name: zengxian-sky-take-out
+  #文件上传保存目录(nginx 的 html/sky 目录下,返回 /img/upload/xxx 即可直接访问)
+  upload:
+    dir: D:/Develop/Project1/nginx-1.20.2/html/sky/img/upload
