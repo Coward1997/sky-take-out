@@ -19,3 +19,6 @@ sky:
     database: 10
   upload:
     dir: D:/Develop/Project1/nginx-1.20.2/html/sky/img/upload
+  wechat:
+    appid: wxef71109c68285cf9
+    secret: 9a4187144a21d293bc9dcc351f63c00a

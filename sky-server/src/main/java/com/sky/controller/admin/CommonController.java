@@ -50,8 +50,8 @@ public class CommonController {
             }
             file.transferTo(new File(dir, objectName));
 
-            //返回相对路径,前端(localhost:8080)由 nginx 映射到保存目录,可直接展示
-            return Result.success("/img/upload/" + objectName);
+            //返回完整 URL:小程序的 image 组件无法解析相对路径,必须带域名;管理端浏览器同样可直接展示
+            return Result.success("http://localhost:8080/img/upload/" + objectName);
         } catch (IOException e) {
            log.error("文件上传失败：{}",e);
         }
