@@ -18,6 +18,10 @@ public interface ShoppingCartMapper {
      */
     List<ShoppingCart> list(ShoppingCart shoppingCart);
 
+    /**
+     * 更新购物车菜品数量
+     * @param shoppingCart
+     */
     @Update("update shopping_cart set number = #{number} where id = #{id}")
     void updateNumberById(ShoppingCart shoppingCart);
 
@@ -35,4 +39,11 @@ public interface ShoppingCartMapper {
      */
     @Delete("delete from shopping_cart where user_id = #{userId}")
     void deleteByUserId(Long userId);
+
+    /**
+     * 根据id删除购物车数据
+     * @param id
+     */
+    @Delete("delete from shopping_cart where id = #{id}")
+    void deleteById(Long id);
 }
