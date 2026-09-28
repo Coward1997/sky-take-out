@@ -75,4 +75,12 @@ public interface OrderMapper {
      * @return
      */
     Integer countByMap(Map map);
+
+    /**
+     * 统计指定时间内销量前十
+     * @param begin
+     * @param end
+     * @return
+     */
+    List<GoodsSalesDTO> getSalesTop10(LocalDateTime begin, LocalDateTime end);
 }
