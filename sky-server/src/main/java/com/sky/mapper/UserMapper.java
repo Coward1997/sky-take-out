@@ -5,6 +5,8 @@ import com.sky.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.Map;
+
 @Mapper
 public interface UserMapper {
 
@@ -29,12 +31,13 @@ public interface UserMapper {
     @Select("select * from orders where number = #{orderNumber}")
     Orders getByNumber(String orderNumber);
 
-    /**
-     * 修改订单信息
-     * @param orders
-     */
-    void update(Orders orders);
-
     @Select("select * from user where id = #{id}")
     User getById(Long userId);
+
+    /**
+     * 根据动态条件统计用户数据
+     * @param map
+     * @return
+     */
+    Integer countByMap(Map map);
 }
