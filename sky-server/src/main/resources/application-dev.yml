@@ -5,23 +5,23 @@ sky:
     port: 3306
     database: sky_take_out
     username: root
-    password: Zxa123456*
+    password: 
   alioss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tAmQrvTt1X16DrVEJuw
-    access-key-secret: xX5kaHWODRS2vpHEoJfWkAda4dBRdZ
-    bucket-name: zengxian-sky-take-out
+    endpoint: 
+    access-key-id: 
+    access-key-secret: 
+    bucket-name: 
   #文件上传保存目录(nginx 的 html/sky 目录下,返回 /img/upload/xxx 即可直接访问)
   redis:
     host: localhost
     port: 6379
-    password: Zxa123456*
+    password: 
     database: 10
   upload:
     dir: D:/Develop/Project1/nginx-1.20.2/html/sky/img/upload
   wechat:
-    appid: wxef71109c68285cf9
-    secret: 9a4187144a21d293bc9dcc351f63c00a
+    appid: 
+    secret: 
   shop:
     address: 北京市朝阳区新街大道一号楼8层
   baidu:
